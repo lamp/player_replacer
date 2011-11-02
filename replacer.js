@@ -47,7 +47,10 @@ PlayerReplacer.prototype = {
                  'seed_name' : seed_name,
                  'format' : 'json',
                  'maxwidth' : this.dimensions.width,
-                 'maxheight' : this.dimensions.height
+                 'maxheight' : this.dimensions.height,
+                 'flashvars' : {
+                   'autoplay' : true
+                 }
                 };
       $.getJSON('http://api.videojuicer.com/oembed?callback=?', params, function(data){
         scope.presentations[id].embed_code = data.html;
