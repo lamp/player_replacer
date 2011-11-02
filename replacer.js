@@ -22,7 +22,7 @@ PlayerReplacer.prototype = {
     $(this.selector).each(function(i, v){
       var id        = $(this).attr('data-id'),
           seed_name = $(this).attr('data-seed-name');
-      $(this).append('<img src="http://' + seed_name + '.thumbnails.videojuicer.com/' + seed_name + '/presentations' + id + '.jpg?maxwidth=' + scope.dimensions.width + '&maxheight=' + scope.dimensions.height + '" class="replaced_thumb" />')
+      $(this).append('<img src="http://' + seed_name + '.thumbnails.videojuicer.com/' + seed_name + '/presentations/' + id + '.jpg?maxwidth=' + scope.dimensions.width + '&maxheight=' + scope.dimensions.height + '" class="replaced_thumb" />')
     });
   },
   
