@@ -12,10 +12,6 @@ PlayerReplacer.configure = function(options){
   replacer.seed_name = options.seed_name;
   replacer.dimensions = options.dimensions;
   replacer.replace();
-  $('.replaced_thumb').click(function(e){
-    e.preventDefault();
-    replacer.switch_player(this);
-  });
   return replacer;
 };
 
@@ -30,7 +26,11 @@ PlayerReplacer.prototype = {
 
       scope.presentations[id] = { 'seed_name' : seed_name, 'img' : img };
       $(this).children().remove();
-      $(this).html(img)
+      $(this).html(img);
+      $('.replaced_thumb').click(function(e){
+        e.preventDefault();
+        scope.switch_player(this);
+      });
     });
   },
 
