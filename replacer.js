@@ -42,7 +42,12 @@ PlayerReplacer.prototype = {
     this.replace();
     if(typeof(this.presentations[id].embed_code) == 'undefined'){
       var url = 'http://api.videojuicer.com/presentations/' + id + '.html?seed_name=' + seed_name;
-      params = { 'url' : url, 'seed_name' : seed_name, 'format' : 'json'};
+      params = { 'url' : url,
+                 'seed_name' : seed_name,
+                 'format' : 'json',
+                 'maxwidth' : this.dimensions.width,
+                 'maxheight' : this.dimensions.height
+                };
       $.getJSON('http://api.videojuicer.com/oembed?callback=?', params, function(data){
         scope.presentations[id].embed_code = data.html;
         parent.html(data.html);
