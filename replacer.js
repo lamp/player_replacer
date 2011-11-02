@@ -29,6 +29,7 @@ PlayerReplacer.prototype = {
           img       = '<img src="http://' + seed_name + '.thumbnails.videojuicer.com/' + seed_name + '/presentations/' + id + '.jpg?maxwidth=' + scope.dimensions.width + '&maxheight=' + scope.dimensions.height + '" class="replaced_thumb" />';
 
       scope.presentations[id] = { 'seed_name' : seed_name, 'img' : img };
+      $(this).children().remove();
       $(this).html(img)
     });
   },
