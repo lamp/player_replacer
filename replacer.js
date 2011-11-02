@@ -36,14 +36,16 @@ PlayerReplacer.prototype = {
   switch_player : function(element){
     var parent    = $(element).parent(),
         id        = parent.attr('data-id'),
-        seed_name = parent.attr('data-seed-name');
+        seed_name = parent.attr('data-seed-name'),
+        scope     = this;
     //replace all players with thumbnails
     this.replace();
     if(typeof(this.presentations[id].embed_code) == 'undefined'){
       var url = 'http://api.videojuicer.com/presentations/' + id + '.html?seed_name=' + seed_name;
       params = { 'url' : url, 'seed_name' : seed_name, 'format' : 'json'};
       $.getJSON('http://api.videojuicer.com/oembed?callback=?', params, function(data){
-        console.log(data);
+        scope.presentations[id].embed_code = data.html;
+        parent.html(data.html);
       });
     }else{
       parent.html(this.presentations[id].embed_code);
