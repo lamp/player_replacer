@@ -40,11 +40,9 @@ PlayerReplacer.prototype = {
         seed_name = parent.attr('data-seed-name'),
         scope     = this;
     //replace all players with thumbnails
-    console.log('wowowo')
     this.replace();
-    console.log('wowowowowoowowowow')
+    console.log(this.presentations)
     if(typeof(this.presentations[id].embed_code) == 'undefined'){
-      console.log('dsafdsfdsf')
       var url = 'http://api.videojuicer.com/presentations/' + id + '.html?seed_name=' + seed_name;
       params = { 'url' : url,
                  'seed_name' : seed_name,
