@@ -39,9 +39,12 @@ PlayerReplacer.prototype = {
         seed_name = parent.attr('data-seed-name');
     //replace all players with thumbnails
     this.replace();
-    console.log(id);
     if(typeof(this.presentations[id].embed_code) == 'undefined'){
-      
+      var url = 'http://api.videojuicer.com/presentations/' + id + '.html?seed_name=' + seed_name;
+      params = { 'url' : url, 'seed_name' : seed_name, 'format' : 'json'};
+      $.getJSON('http://api.videojuicer.com/oembed?callback=?', params, function(data){
+        console.log(data);
+      });
     }else{
       parent.html(this.presentations[id].embed_code);
     }  
