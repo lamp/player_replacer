@@ -12,6 +12,10 @@ PlayerReplacer.configure = function(options){
   replacer.seed_name = options.seed_name;
   replacer.dimensions = options.dimensions;
   replacer.replace();
+  $('.replaced_thumb').live('click', function(e){
+    e.preventDefault();
+    replacer.switch_player(this);
+  });
   return replacer;
 };
 
@@ -27,10 +31,6 @@ PlayerReplacer.prototype = {
       scope.presentations[id] = { 'seed_name' : seed_name, 'img' : img };
       $(this).children().remove();
       $(this).html(img);
-      $('.replaced_thumb').click(function(e){
-        e.preventDefault();
-        scope.switch_player(this);
-      });
     });
   },
 
@@ -51,6 +51,7 @@ PlayerReplacer.prototype = {
                  'maxheight' : this.dimensions.height
                 };
       $.getJSON('http://api.videojuicer.com/oembed?callback=?', params, function(data){
+        console.log(id);
         scope.presentations[id].embed_code = data.html;
         parent.html(data.html);
       });
