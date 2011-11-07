@@ -4,7 +4,7 @@
 * and replace any active player instances with their respective thumbnail
 * Requires jquery to be available.
 */
-PlayerReplacer = function(){}
+PlayerReplacer = function(){};
 
 PlayerReplacer.configure = function(options){
   var replacer = new PlayerReplacer();
@@ -12,9 +12,10 @@ PlayerReplacer.configure = function(options){
   replacer.seed_name = options.seed_name;
   replacer.dimensions = options.dimensions;
   replacer.replace();
-  if(options.button_selector != false){
+  if(options.button_selector !== false){
     $(options.button_selector).live('click', function(){
       replacer.switch_player($(options.selector).filter('[data-id='+ $(this).attr('data-id') + ']').children('img'));
+      $(this).hide();
     });
   }
   $('.replaced_thumb').live('click', function(e){
