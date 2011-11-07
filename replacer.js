@@ -12,6 +12,11 @@ PlayerReplacer.configure = function(options){
   replacer.seed_name = options.seed_name;
   replacer.dimensions = options.dimensions;
   replacer.replace();
+  if(options.button_selector != false){
+    $(options.button_selector).click(function(){
+      replacer.switch_player($(options.selector).filter('[data-id='+ $(this).attr('data-id') + ']'));
+    });
+  }
   $('.replaced_thumb').live('click', function(e){
     e.preventDefault();
     replacer.switch_player(this);
