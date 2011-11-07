@@ -14,7 +14,7 @@ PlayerReplacer.configure = function(options){
   replacer.replace();
   if(options.button_selector != false){
     $(options.button_selector).click(function(){
-      replacer.switch_player($(options.selector).filter('[data-id='+ $(this).attr('data-id') + ']'));
+      replacer.switch_player($(options.selector).filter('[data-id='+ $(this).attr('data-id') + ']').children('img'));
     });
   }
   $('.replaced_thumb').live('click', function(e){
