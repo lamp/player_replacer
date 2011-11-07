@@ -13,7 +13,7 @@ PlayerReplacer.configure = function(options){
   replacer.dimensions = options.dimensions;
   replacer.replace();
   if(options.button_selector != false){
-    $(options.button_selector).click(function(){
+    $(options.button_selector).live('click', function(){
       replacer.switch_player($(options.selector).filter('[data-id='+ $(this).attr('data-id') + ']').children('img'));
     });
   }
