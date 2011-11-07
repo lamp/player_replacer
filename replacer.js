@@ -11,6 +11,7 @@ PlayerReplacer.configure = function(options){
   replacer.selector = options.selector;
   replacer.seed_name = options.seed_name;
   replacer.dimensions = options.dimensions;
+  if(typeof options.button_selector != 'undefined') replacer.button_selector = options.button_selector;
   replacer.replace();
   if(options.button_selector !== false){
     $(options.button_selector).live('click', function(){
@@ -38,6 +39,7 @@ PlayerReplacer.prototype = {
       $(this).children().remove();
       $(this).html(img);
     });
+    $(this.button_selector).show();
   },
 
   switch_player : function(element){
